@@ -194,13 +194,16 @@ footer {
 	position: absolute;
 	top:0;
 	left: 100%;
+	z-index: 1;
 	width: 100%;
 	background-color: var(--accent-color);
 	color: var(--light_menu);
 	display: none;
 	& > li a { margin: 2px; }
 }
-
+video {
+    width: 90%;
+}
 
 /* media queries */
 @media only screen and (min-width: 922px) {
