@@ -52,18 +52,18 @@ header {
 	border-bottom: 2px solid var(--accent-color);
 	background-image: linear-gradient(
 	    30deg, var(--gradient-color) 0%, white 30%, white 65%, var(--gradient-color) 100%);
-}
-header h2 {
-	font-size: 175%;
-	padding: .5em 0 0 0;
-}
-header h3 {
-	font-size: 130%;
-	font-style: italic;
-	padding-bottom: 1em;
-}
-header img {
-	display: none;
+	& h2 {
+		font-size: 175%;
+		padding: .5em 0 0 0;
+	}
+	& h3 {
+		font-size: 130%;
+		font-style: italic;
+		padding-bottom: 1em;
+	}
+	& img {
+		display: none;
+	}
 }
 
 /* the styles for the main content */
@@ -71,33 +71,26 @@ main {
 	display: flex;
 	flex-direction: column-reverse;
 	padding: 0 1em 1em;
-}
-main blockquote {
-	font-style: italic;
-	padding-left: 1em;
-}
-main h3 + img { /* speaker images */
-	width: clamp(40px, 50%, 75px);
-	border: 4px double var(--accent-color);
-	border-radius: 10px;
+	& blockquote {
+		font-style: italic;
+		padding-left: 1em;
+	}
+	& h3 + img { /* speaker images */
+		width: clamp(40px, 50%, 75px);
+		border: 4px double var(--accent-color);
+		border-radius: 10px;
+	}
 }
 
 /* the styles for the section */
 section {
 	padding-left: .5em;
 	border-bottom: 8px double var(--accent-color);
-}
-section img {
-	width: clamp(100px, 50%, 250px);
-	float: right;
-	margin: 0 1em .25em;
-}
-
-/* ✅ NEW — float the video like the image */
-section video {
-	width: clamp(100px, 50%, 250px);
-	float: left;
-	margin: 0 1em .25em 0;
+	& img {
+		width: clamp(100px, 50%, 250px);
+		float: right;
+		margin: 0 1em .25em;
+	}
 }
 
 /* the styles for the aside */
@@ -108,11 +101,11 @@ aside {
 /* the styles for the footer */
 footer {
 	background-color: var(--accent-color);
-}
-footer p {
-	text-align: center;
-	color: white;
-	padding: 1em 0;
+	& p {
+		text-align: center;
+		color: white;
+		padding: 1em 0;
+	}
 }
 
 /* CSS class */
@@ -121,14 +114,16 @@ footer p {
 	border-bottom: 2px solid var(--accent-color);
 	padding: .5em 0 1em;
 }
-.speaker h1 {
-	color: var(--accent-color);
-}
-.speaker h2 {
-	color: black;
-}
-.speaker p {
-	padding: .5em 0; 
+.speaker {
+	& h1 {
+		color: var(--accent-color);
+	}
+	& h2 {
+		color: black;
+	}
+	& p {
+		padding: .5em 0; 
+	}	
 }
 .large {
 	font-size: 125%;
@@ -147,27 +142,24 @@ footer p {
 	clear: left;
 	position: relative;
 	background-color: var(--accent-color);
-}
-.navbar a {
-	display: block;
-	padding: 1em;
-	text-decoration: none;
-	margin: 0 2px 2px 0;
-}
-.navbar a:link, 
-.navbar a:visited { 
-	color: var(--light_menu);
-}
-.navbar a:hover, 
-.navbar a:focus, 
-.navbar a.current {
-	background-color: var(--mid_menu);
-	color: var(--dark_menu);
-}
-.navbar ul {
-	list-style-type: none;
-	padding: 0;
-	margin: 0;
+	& a {
+		display: block;
+		padding: 1em;
+		text-decoration: none;
+		margin: 0 2px 2px 0;
+	}
+	& a:link, a:visited { 
+		color: var(--light_menu);
+	}
+	& a:hover, a:focus, a.current {
+		background-color: var(--mid_menu);
+		color: var(--dark_menu);
+	}
+	& ul {
+		list-style-type: none;
+		padding: 0;
+		margin: 0;
+	}
 }
 
 .menu-btn {                                
@@ -176,40 +168,39 @@ footer p {
     color: var(--light_menu); 
 }
 .menu-btn::after { 
-    content: "\2630"; /* hamburger symbol */
+    content: "\2630";                    /* hamburger symbol */
 }
 
-#checkbox-toggle { display: none; }
+#checkbox-toggle { display: none; }      /* checkbox is always hidden */
 
 /* when checkbox is checked, show menu and change icon */
 #checkbox-toggle:checked ~ .menu { 
     display: block; 
 }
 #checkbox-toggle:checked ~ .menu-btn::after {
-    content: "\2716"; /* close (X) symbol */
+    content: "\2716";                    /* close (X) symbol */
 }
 
 .menu li:has(.submenu) {
 	position: relative;
-}
-.menu li:has(.submenu) small::after { content: "\25b6"; }
-.menu li:has(.submenu) small { margin-left: .25em; }
-.menu li:has(.submenu):hover > .submenu {
-	display: block;
+	& small::after { content: "\25b6"; }  /* right triangle */
+	& small { margin-left: .25em; }
+	&:hover > .submenu {
+		display: block;
+	}
 }
 
 .submenu {
 	position: absolute;
-	top: 0;
+	top:0;
 	left: 100%;
 	z-index: 1;
 	width: 100%;
 	background-color: var(--accent-color);
 	color: var(--light_menu);
 	display: none;
+	& > li a { margin: 2px; }
 }
-.submenu > li a { margin: 2px; }
-
 video {
     width: 90%;
 }
@@ -219,10 +210,12 @@ video {
 	main {
 		flex-direction: row;
 	}
+	
 	section {
 		flex-basis: 75%;
 		border-bottom: none;
 	}
+	
 	aside {
 		flex-basis: 25%;
 	}
@@ -233,26 +226,31 @@ video {
 		display: flex;
 		position: relative;
 		width: 100%;
-	}
-	.menu li { 
-		flex-basis: 20%; 
-		text-align: center;
+		& li { 
+			flex-basis: 20%; 
+			text-align: center;
+		}
 	}
 	
 	.menu-btn { display: none; }
+
 	#checkbox-toggle:checked ~ .menu { display: flex; }
 
-	.menu li:has(.submenu) small::after { content: "\25bc"; }
+	.menu li:has(.submenu) {
+		& small::after { content: "\25bc"; }  /* down triangle */
+	}
 	
 	.submenu {
 		top: auto;
 		left: 0;
 		right: 0;
+		& > li a { margin: 0 2px 2px; }
 	}
-	.submenu > li a { margin: 0 2px 2px; }
 
-	.navbar a {
-		margin: 0 1px 2px;
+	.navbar {
+		& a {
+			margin: 0 1px 2px;
+		}
 	}
 
 	.menu > li:first-child a { margin-left: 0; }
@@ -262,11 +260,11 @@ video {
 @media only screen and (min-width: 658px) {
 	header {
 		text-align: left;
-	}
-	header img {
-		display: block;
-		width: clamp(40px, 15%, 80px);
-		float: left;
-		margin: .75em 1em;
+		& img {
+			display: block;
+			width: clamp(40px, 15%, 80px);
+			float: left;
+			margin: .75em 1em;
+		}
 	}
 }
